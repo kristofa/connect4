@@ -12,7 +12,7 @@ import BoardState._
  * @param algoDepth How many steps need to computer player need to look forward.
  * @param evaluation Evaluation 'function' that gives a score to a given state of board.
  */
-class ComputerPlayer(val name:String, val disc:Disc, val algoDepth:Int, val evaluation:Evaluation) extends Player {
+class ComputerPlayer(val name:String, val disc:Disc, val algoDepth:Int) extends Player with DefaultEvaluation {
   
   private val otherPlayerDisc = { if (disc == Player1) Player2 else Player1 }
   
@@ -49,7 +49,7 @@ class ComputerPlayer(val name:String, val disc:Disc, val algoDepth:Int, val eval
   	  
 		  if (depth==0 || board.getBoardState != GameInProgress)
 		  {
-		     evaluation.evaluate(board, this)
+		     evaluate(board, this)
 		  }
 		  else if (max)
 		  {

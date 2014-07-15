@@ -3,7 +3,7 @@ package com.github.kristofa.connect4
 /**
  * This is a quite louzy evaluation function.
  */
-class DefaultEvaluation extends Evaluation {
+trait DefaultEvaluation extends Evaluation {
   
   /**
     * Evaluate given board for given player.
