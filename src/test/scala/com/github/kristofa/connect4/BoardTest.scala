@@ -184,7 +184,7 @@ class BoardTest {
   }
   
   @Test
-  def getCopyConstructor() {
+  def copyConstructor() {
 	      
 	  assertEquals(BoardState.GameInProgress, testBoard.drop(0, Disc.Player1 ))
 	  assertEquals(BoardState.GameInProgress, testBoard.drop(6, Disc.Player2 ))
@@ -199,6 +199,29 @@ class BoardTest {
 	  assertNull(boardCopy.getBoardValue(6, 4))
 	  assertNull(boardCopy.getBoardValue(5, 5)) 
 	  
+  }
+  
+  @Test
+  def testHashCode() {
+	  testBoard.drop(0, Disc.Player1 )
+	  val boardCopy = new Board(testBoard)
+	  
+	  assertEquals(testBoard.hashCode, boardCopy.hashCode)
+  }
+  
+  @Test
+  def testEquals() {
+	  assertFalse(testBoard.equals(null))
+	  assertFalse(testBoard.equals(new String()))
+	  assertTrue(testBoard.equals(testBoard))
+
+	  val other = new Board(7,6)
+	  other.drop(0, Disc.Player1 )
+	  assertFalse(testBoard.equals(other))
+	  
+	  val copy = new Board(other)
+	  assertTrue(other.equals(copy))
+	  assertTrue(copy.equals(other))
   }
   
 

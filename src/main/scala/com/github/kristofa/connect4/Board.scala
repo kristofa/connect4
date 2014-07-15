@@ -106,6 +106,40 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
     }
   }
   
+  
+  final override def hashCode = 17 * nrOfCols + 31 * nrOfRows
+     
+  
+  final override def equals(other: Any) = {
+    
+    if (other != null && other.isInstanceOf[Board])
+    {
+    	val that = other.asInstanceOf[Board]
+		if (nrOfCols  == that.nrOfCols  && nrOfRows  == that.nrOfRows )
+		{
+			var equal = true
+			for(col <- 0 until nrOfCols if equal ) {
+			  for(row <- 0 until nrOfRows if equal ) {
+			    if (content(col)(row) != that.content(col)(row))
+			    {
+			      equal = false
+			    }
+			  }
+			}
+			equal
+		}
+		else
+		{
+		  false
+		}
+    }
+    else
+    {
+    	false
+    }
+
+  }
+  
   private def full : Boolean = {
     var boardFull = true
     for(nextDrop <- rowNextDrop if boardFull == true )
