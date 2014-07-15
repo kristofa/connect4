@@ -42,6 +42,9 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
     {
       rowNextDrop(col) = board.rowNextDrop(col)
     }
+    
+    boardState  = board.boardState 
+    winningDisc  = board.winningDisc 
   }
   
   /**
