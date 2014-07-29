@@ -15,5 +15,5 @@ trait Evaluation {
     * @param board Game board
     * @param player Player for who to evaluate board.
     */
-	def evaluate(board:Board, player:Player): Int;
+	def evaluate(board:Board, player:Player): Int = 0
 }

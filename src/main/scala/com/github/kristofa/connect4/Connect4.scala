@@ -10,7 +10,7 @@ object Connect4 extends App {
   val computerAlgoDepth = 7
   
   val board = new Board(boardNrOfCols, boardNrOfRows)
-  val player1 = new ComputerPlayer("Computer", Disc.Player1, computerAlgoDepth)
+  val player1 = new ComputerPlayer("Computer", Disc.Player1, computerAlgoDepth) with BetterEvaluation
   val player2 = new HumanPlayer("Human", Disc.Player2)
   
   while(board.getBoardState == BoardState.GameInProgress)

@@ -11,7 +11,7 @@ trait DefaultEvaluation extends Evaluation {
     * for the given player.
     *  
     */
-	def evaluate(board:Board, player:Player): Int = {
+	override def evaluate(board:Board, player:Player): Int = {
 	    
 	  if (board.getBoardState == BoardState.FourInALine )
 	  {

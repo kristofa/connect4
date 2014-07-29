@@ -11,7 +11,7 @@ package com.github.kristofa.connect4
 trait BetterEvaluation extends Evaluation {
     import Disc._
  
-	def evaluate(board:Board, player:Player): Int = {
+	override def evaluate(board:Board, player:Player): Int = {
 	    
 	  if (board.getBoardState == BoardState.FourInALine )
 	  {
