@@ -67,7 +67,7 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
    * 
    * @param colNr Column. Index starts at 0 and ends at nrOfCols - 1.
    */
-  def dropPossible(colNr:Int) : Boolean = { if (colNr >= 0 && colNr < nrOfCols && content(colNr)(0) == null) true else false  }
+  def dropPossible(colNr:Int) : Boolean = { if (colNr >= 0 && colNr < nrOfCols && content(colNr)(0) == null && boardState == GameInProgress) true else false  }
   
   /**
    * Drop disc at given column.
@@ -86,18 +86,15 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
       val rowNr = rowNextDrop(colNr)
       content(colNr)(rowNr) = value
       rowNextDrop(colNr) = rowNextDrop(colNr) - 1
-      
-      if (boardState == GameInProgress )
+         
+      if (fourInLine(colNr, rowNr))
       {
-    	  if (fourInLine(colNr, rowNr))
-    	  {
-    		  boardState = FourInALine
-    		  winningDisc = value
-    	  } else if (full)
-    	  {
-    		  boardState = Full
-    	  }
-      }
+    	  boardState = FourInALine
+    	  winningDisc = value
+      } else if (full)
+      {
+    	  boardState = Full
+      } 
       boardState 
     }
     else

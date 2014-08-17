@@ -76,7 +76,15 @@ class BoardTest {
 	  assertEquals(BoardState.GameInProgress, testBoard.drop(2, Disc.Player1 ))
 	  assertEquals(BoardState.FourInALine, testBoard.drop(3, Disc.Player1 ))
 	  assertEquals(Disc.Player1 , testBoard.getWinningDisc);
-	  assertEquals("FourInALine game state should be kept.", BoardState.FourInALine, testBoard.drop(4, Disc.Player2 ))
+	 
+	  try
+	  {
+	    // Dropping disc when game is not 'in progress' should not be allowed.
+	    testBoard.drop(4, Disc.Player2 )
+	  }
+	  catch {
+	    case e : IllegalStateException => // Expected.
+	  }
 	  
   }
   
@@ -95,7 +103,14 @@ class BoardTest {
 	  assertEquals(BoardState.GameInProgress, testBoard.drop(2, Disc.Player2 ))
 	  assertEquals(BoardState.FourInALine, testBoard.drop(2, Disc.Player2 ))
 	  assertEquals(Disc.Player2 , testBoard.getWinningDisc)
-	  assertEquals("FourInALine game state should be kept.", BoardState.FourInALine, testBoard.drop(2, Disc.Player1 ))  
+	  try
+	  {
+	    // Dropping disc when game is not 'in progress' should not be allowed.
+	    testBoard.drop(2, Disc.Player1 )
+	  }
+	  catch {
+	    case e : IllegalStateException => // Expected.
+	  }
   }
   
   /**
