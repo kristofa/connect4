@@ -24,6 +24,7 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
   
   private var boardState = GameInProgress 
   private var winningDisc:Disc = null
+  private var nrOfDiscs = 0
 
   /**
    * Copy constructor.
@@ -45,6 +46,7 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
     
     boardState  = board.boardState 
     winningDisc  = board.winningDisc 
+    nrOfDiscs = board.nrOfDiscs 
   }
   
   /**
@@ -56,6 +58,11 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
    * In case board state is FourInALine you can use this to get winning disc.
    */
   def getWinningDisc = winningDisc 
+  
+  /**
+   * Gets the nr of discs in the board.
+   */
+  def getNrOfDiscs = nrOfDiscs 
   
   /**
    * Gets board content value at given col and row.
@@ -86,6 +93,7 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
       val rowNr = rowNextDrop(colNr)
       content(colNr)(rowNr) = value
       rowNextDrop(colNr) = rowNextDrop(colNr) - 1
+      nrOfDiscs  += 1
          
       if (fourInLine(colNr, rowNr))
       {

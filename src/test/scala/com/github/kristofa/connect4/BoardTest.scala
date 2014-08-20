@@ -63,6 +63,15 @@ class BoardTest {
 	  
   }
   
+  @Test
+  def nrOfDiscsTest {
+	  assertEquals(0, testBoard.getNrOfDiscs)
+	  testBoard.drop(0, Disc.Player1 )
+	  assertEquals(1, testBoard.getNrOfDiscs)
+	  testBoard.drop(0, Disc.Player2 )
+	  assertEquals(2, testBoard.getNrOfDiscs)
+  }
+  
   /**
    * Creates 4 in a line horizontal:
    * 
