@@ -36,7 +36,7 @@ class BetterEvaluationTest {
   def evaluateMostOptimalFirstMove() {
 	 
     board.drop(3, player.disc)
-	assertEquals(19, Eval.evaluate(board, player))
+	assertEquals(18, Eval.evaluate(board, player))
 	  
   }
   
@@ -44,7 +44,7 @@ class BetterEvaluationTest {
   def evaluateFirstColumnFirstMove() {
 	 
     board.drop(0, player.disc)
-	assertEquals(12, Eval.evaluate(board, player))
+	assertEquals(11, Eval.evaluate(board, player))
 	  
   }
   
@@ -52,7 +52,7 @@ class BetterEvaluationTest {
   def evaluateSecondColumnFirstMove() {
 	 
     board.drop(1, player.disc)
-	assertEquals(13, Eval.evaluate(board, player))
+	assertEquals(12, Eval.evaluate(board, player))
 	  
   }
   
@@ -60,7 +60,7 @@ class BetterEvaluationTest {
   def evaluateThirdColumnFirstMove() {
 	 
     board.drop(2, player.disc)
-	assertEquals(14, Eval.evaluate(board, player))
+	assertEquals(13, Eval.evaluate(board, player))
 	  
   }
   
@@ -68,7 +68,7 @@ class BetterEvaluationTest {
   def evaluateFifthColumnFirstMove() {
 	 
     board.drop(4, player.disc)
-	assertEquals(14, Eval.evaluate(board, player))
+	assertEquals(13, Eval.evaluate(board, player))
 	  
   }
   
@@ -76,7 +76,7 @@ class BetterEvaluationTest {
   def evaluateSixthColumnFirstMove() {
 	 
     board.drop(5, player.disc)
-	assertEquals(13, Eval.evaluate(board, player))
+	assertEquals(12, Eval.evaluate(board, player))
 	  
   }
   
@@ -84,7 +84,7 @@ class BetterEvaluationTest {
   def evaluateLastColumnFirstMove() {
 	 
     board.drop(6, player.disc)
-	assertEquals(12, Eval.evaluate(board, player))
+	assertEquals(11, Eval.evaluate(board, player))
 	  
   }
 

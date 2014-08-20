@@ -6,6 +6,8 @@ package com.github.kristofa.connect4
  * It gives a score based on how many times we can still make 4 in a line for given player.
  * <p/>
  * It has shortcuts in case player has 4 in line, other player has 4 in line or board is full.
+ * <p/>
+ * It also favours early win situation by taking into account the nr of discs present in the board.
  * 
  */
 trait BetterEvaluation extends Evaluation {
@@ -15,7 +17,7 @@ trait BetterEvaluation extends Evaluation {
 	    
 	  if (board.getBoardState == BoardState.FourInALine )
 	  {
-	    if (board.getWinningDisc == player.disc) Integer.MAX_VALUE else 0
+	    if (board.getWinningDisc == player.disc) Integer.MAX_VALUE - board.getNrOfDiscs else Integer.MIN_VALUE
 	  }
 	  else if (board.getBoardState == BoardState.Full)
 	  {
@@ -35,7 +37,7 @@ trait BetterEvaluation extends Evaluation {
 	    	  }
 	      }
 	    }
-	    value
+	    value - board.getNrOfDiscs
 	  }
 	}
     
