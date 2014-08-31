@@ -1,5 +1,7 @@
 package com.github.kristofa.connect4
 
+import Disc._
+import BoardState._
 
 /**
  * Connect4 game board.
@@ -10,9 +12,6 @@ package com.github.kristofa.connect4
  */
 class Board(val nrOfCols:Int, val nrOfRows:Int) {
 
-  import Disc._
-  import BoardState._
-  
   private val content = Array.ofDim[Disc](nrOfCols, nrOfRows)
   for(col <- 0 until nrOfCols; row <- 0 until nrOfRows)
   {
