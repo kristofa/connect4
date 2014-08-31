@@ -64,6 +64,20 @@ class Board(val nrOfCols:Int, val nrOfRows:Int) {
   def getNrOfDiscs = nrOfDiscs 
   
   /**
+   * Returns an array of tuples with 2 elements. Every tuple corresponds to a cell. The first element of the tuple is the column. The second
+   * element of the tuple is the row.
+   */
+  def cellIndices: Array[(Int, Int)] = {
+    val a = new Array[(Int, Int)](nrOfCols * nrOfRows)
+    for(col <- 0 until nrOfCols) {
+      for(row <- 0 until nrOfRows) {
+       a(col + (row * nrOfCols)) = (col, row) 
+      }
+    }
+    a
+  }
+  
+  /**
    * Gets board content value at given col and row.
    */
   def getBoardValue(col:Int, row:Int): Disc = { if (col >=0 && col < nrOfCols && row >=0 && row < nrOfRows) content(col)(row) else null } 

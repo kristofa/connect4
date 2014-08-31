@@ -248,5 +248,15 @@ class BoardTest {
 	  assertTrue(copy.equals(other))
   }
   
+  @Test
+  def testCellIndices() {
+      val smallBoard = new Board(2, 1)
+	  val indices = smallBoard.cellIndices
+	  assertEquals(smallBoard.nrOfCols * smallBoard.nrOfRows, indices.length)
+	  assertTrue(indices.contains((0,0)))
+	  assertTrue(indices.contains((1,0)))
+	  
+  }
+  
 
 }
