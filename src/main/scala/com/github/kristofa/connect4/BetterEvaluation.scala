@@ -1,5 +1,7 @@
 package com.github.kristofa.connect4
 
+import Disc._
+
 /**
  * Better than DefaultEvaluation.
  * <p/>
@@ -11,7 +13,7 @@ package com.github.kristofa.connect4
  * 
  */
 trait BetterEvaluation extends Evaluation {
-    import Disc._
+    
  
 	override def evaluate(board:Board, player:Player): Int = {
 	    
