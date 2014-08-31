@@ -15,7 +15,7 @@ import Disc._
 trait BetterEvaluation extends Evaluation {
     
  
-	override def evaluate(board:Board, player:Player): Int = {
+	 override def evaluate(board:Board, player:Player): Int = {
 	    
 	  if (board.getBoardState == BoardState.FourInALine )
 	  {
@@ -27,19 +27,22 @@ trait BetterEvaluation extends Evaluation {
 	  }
 	  else
 	  {
-	    var value = 0
-	    for(col <- 0 until board.nrOfCols ) {
-	      for (row <- 0 until board.nrOfRows ) {
-	    	  if (board.getBoardValue(col, row) == player.disc)
-	    	  {
-	    		value += (calc(horizontal(col, row), board, player.disc) + 
-	    		    calc(vertical(col, row), board, player.disc) + 
-	    		    calc(diagonal1(col, row), board, player.disc) + 
-	    		    calc(diagonal2(col, row), board, player.disc))
-	    	  }
-	      }
+	    val value = board.cellIndices.foldLeft(0)( (curVal, cell) => {
+	        if (board.getBoardValue(cell._1, cell._2) == player.disc)
+	    	{
+	           curVal + (calc(horizontal(cell._1, cell._2), board, player.disc) + 
+	    		    calc(vertical(cell._1, cell._2), board, player.disc) + 
+	    		    calc(diagonal1(cell._1, cell._2), board, player.disc) + 
+	    		    calc(diagonal2(cell._1, cell._2), board, player.disc))
+	    	}
+	        else
+	        {
+	          curVal
+	        }    
 	    }
+	    )
 	    value - board.getNrOfDiscs
+	   
 	  }
 	}
     
