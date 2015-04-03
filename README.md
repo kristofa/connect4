@@ -10,7 +10,11 @@ to have a little project to try out what I read and to get a feel with the langu
 I'll change the code as I progress and get smarter on Scala.
 If you see how things can be done in a nicer way, better, more efficient, feel free to submit pull requests.
 
-I'm currently using [Scala IDE](http://scala-ide.org) 3.0.4 for Scala 2.11.  You can import the project in Scala IDE by using the 'Import Maven Project' option and select
-the pom.xml
+The project uses [sbt](http://www.scala-sbt.org/). So if you have sbt installed you should be able to execute:
 
-
+`sbt compile` : Compiles application.
+`sbt test:compile` : Compiles tests.
+`sbt test` : Executes the tests.
+`sbt run`  : Executes the application.
+`sbt eclipse` : Create Eclipse project files.
+`sbt gen-idea` : Create IntelliJ IDEA project files.
