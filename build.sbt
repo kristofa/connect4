@@ -11,9 +11,7 @@ organization := "com.github.kristofa"
 scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
-	"junit" % "junit" % "4.11" % "test",
-        "com.novocode" % "junit-interface" % "0.11" % "test",
-        "org.mockito" % "mockito-core" % "1.9.5" % "test"
+    "org.specs2" %% "specs2-core" % "2.4.15" % "test"
 )
 
 mainClass in Compile := Some("com.github.kristofa.connect4.Connect4")
