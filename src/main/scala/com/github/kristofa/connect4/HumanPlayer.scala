@@ -1,7 +1,9 @@
 package com.github.kristofa.connect4
 
-import Disc._
-import BoardState._
+import com.github.kristofa.connect4.Discs.Disc
+import com.github.kristofa.connect4.GridStates.GameInProgress
+
+import scala.io.StdIn
 
 /**
  * Player instance that request changes from console (= from a human).
@@ -12,21 +14,19 @@ import BoardState._
  */
 class HumanPlayer(val name:String, val disc:Disc) extends Player {
   
-  def next(board: Board): Integer = {
-     if (board.getBoardState != GameInProgress)
+  def next(grid: Grid): Int = {
+     if (grid.state != GameInProgress)
      {
     	 throw new IllegalStateException("Expected game to be still in progress.")
-	 }
-     
+	   }
      var choice:Int = 0
      do
      {
-    	 printf("Column choice (0-"+(board.nrOfCols-1)+") : ")
-    	 choice = readInt()
+    	 printf("Column choice (0-"+(grid.nrOfCols-1)+") : ")
+    	 choice = StdIn.readInt()
      
-     } while(board.dropPossible(choice) == false)
+     } while(grid.dropPossible(choice) == false)
      choice
-    
   }
 
 }
